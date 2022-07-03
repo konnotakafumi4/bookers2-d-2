@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   #devise_for :usersをresourcesの上に移動
   devise_for :users
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
-    resource :favorites, only: [:create, :destroy]
+    resources :book_comments, only: [:new, :create, :index, :show, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index,:show,:edit,:update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
